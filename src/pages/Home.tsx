@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -45,7 +44,7 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section with Image Slider */}
-      <section className="relative h-screen overflow-hidden">
+      <section className="relative h-[60vh] sm:h-[80vh] md:h-screen overflow-hidden">
         {images.map((image, index) => (
           <div
             key={index}
@@ -57,20 +56,20 @@ const Home = () => {
               className="absolute inset-0 bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${image.url})` }}
             />
-            <div className="absolute inset-0 bg-black/40" />
-            <div className="relative h-full flex items-center justify-center text-center text-white px-4">
-              <div className="max-w-4xl">
-                <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            <div className="absolute inset-0 bg-black/50 sm:bg-black/40" />
+            <div className="relative h-full flex items-center justify-center text-center text-white px-4 sm:px-6">
+              <div className="max-w-3xl sm:max-w-4xl">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
                   {image.title}
                 </h1>
-                <p className="text-xl md:text-2xl mb-8 text-gray-200">
+                <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-gray-200">
                   {image.description}
                 </p>
-                <div className="space-x-4">
-                  <Button asChild size="lg" className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-lg px-8 py-6">
+                <div className="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
+                  <Button asChild size="lg" className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4">
                     <Link to="/booking">Book Your Event</Link>
                   </Button>
-                  <Button asChild variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-gray-800 text-lg px-8 py-6">
+                  <Button asChild variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-gray-800 text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4">
                     <Link to="/gallery">View Gallery</Link>
                   </Button>
                 </div>
@@ -80,12 +79,12 @@ const Home = () => {
         ))}
 
         {/* Slide Indicators */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
           {images.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all ${
+              className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
                 index === currentSlide ? 'bg-white' : 'bg-white/50'
               }`}
             />
@@ -94,24 +93,24 @@ const Home = () => {
       </section>
 
       {/* Welcome Section */}
-      <section className="py-20 px-4 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-gray-800">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 text-gray-800">
             Welcome to Delight Convention Center
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8 sm:mb-12 leading-relaxed">
             Where every event becomes an unforgettable experience. Our world-class facilities and 
             dedicated team ensure your special occasions are perfectly executed.
           </p>
           
           {/* Amenities Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mt-8 sm:mt-12">
             {amenities.map((amenity, index) => (
               <Card key={index} className="h-full hover:shadow-lg transition-shadow">
-                <CardContent className="p-8 text-center">
-                  <amenity.icon className="h-12 w-12 mx-auto mb-4 text-purple-600" />
-                  <h3 className="text-xl font-semibold mb-3 text-gray-800">{amenity.title}</h3>
-                  <p className="text-gray-600">{amenity.description}</p>
+                <CardContent className="p-6 sm:p-8 text-center">
+                  <amenity.icon className="h-10 w-10 sm:h-12 sm:w-12 mx-auto mb-3 sm:mb-4 text-purple-600" />
+                  <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-gray-800">{amenity.title}</h3>
+                  <p className="text-sm sm:text-base text-gray-600">{amenity.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -120,19 +119,19 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-r from-purple-600 to-blue-600 text-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
             Ready to Plan Your Event?
           </h2>
-          <p className="text-xl mb-8 text-purple-100">
+          <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-purple-100">
             Let us help you create memories that will last a lifetime
           </p>
-          <div className="space-x-4">
-            <Button asChild size="lg" variant="secondary" className="text-lg px-8 py-6">
+          <div className="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
+            <Button asChild size="lg" variant="secondary" className="text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4">
               <Link to="/booking">Start Booking</Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-purple-600 text-lg px-8 py-6">
+            <Button asChild variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-purple-600 text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4">
               <Link to="/about">Learn More</Link>
             </Button>
           </div>
